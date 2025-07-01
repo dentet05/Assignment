@@ -27,6 +27,9 @@ namespace Assignment.Models
         [JsonProperty("changePercent24Hr")]
         public string ChangePercent24Hr { get; set; } = "";
 
+        [JsonProperty("volumeUsd24Hr")]
+        public string volumeUsd24Hr { get; set; } = "";
+
         public string PriceUsdFormatted
         {
             get
@@ -36,5 +39,8 @@ namespace Assignment.Models
                 return PriceUsd;
             }
         }
+
+        public string volumeUsd24HrFormatted =>
+            double.TryParse(volumeUsd24Hr, out var vol) ? vol.ToString("N2") : volumeUsd24Hr;
     }
 }

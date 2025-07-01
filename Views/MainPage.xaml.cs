@@ -1,4 +1,5 @@
-﻿using Assignment.ViewModels;
+﻿using Assignment.Models;
+using Assignment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +34,15 @@ namespace Assignment.Views
         private async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             await Vm.LoadCurrenciesAsync();
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var selected = e.ClickedItem as Cryptocurrency;
+            if (selected != null)
+            {
+                Frame.Navigate(typeof(CurrencyDetailsPage), selected);
+            }
         }
     }
 }

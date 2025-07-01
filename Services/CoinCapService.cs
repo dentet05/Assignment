@@ -33,5 +33,16 @@ namespace Assignment.Services
             var result = data.ToObject<List<Cryptocurrency>>();
             return result ?? new List<Cryptocurrency>();
         }
+
+        public async Task<List<Market>> GetMarketsForCurrencyAsync(string currencyId)
+        {
+            var response = await httpClient.GetAsync($"https://rest.coincap.io/v3/exchanges");
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<MarketResponse>(content);
+
+            return result?.Data ?? new List<Market>();
+        }
     }
 }

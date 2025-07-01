@@ -16,7 +16,7 @@ namespace Assignment.Converters
 
             if (double.TryParse(value.ToString(), out double num))
             {
-                return $"{(num >= 0 ? "+" :  "-")}{num:F2}";
+                return $"{(num >= 0 ? "+" :  "")}{num:F2}%";
             }
 
             return value.ToString();
