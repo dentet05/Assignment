@@ -36,7 +36,8 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="{Binding ExchangeId}" Width="100"/>
-                                <TextBlock Text="{Binding PriceUsd}" Width="100"/>
+                                <TextBlock Text="{Binding QuoteSymbol}" Width="60"/>
+                                <TextBlock Text="{Binding PriceUsdFormatted}" Width="100"/>
                                 <Button Content="Go to Market"
                                         Tag="{Binding MarketUrl}"
                                         Click="OnMarketButtonClick"

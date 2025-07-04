@@ -14,7 +14,7 @@ namespace Assignment.Services
     public class CoinCapService
     {
         private readonly HttpClient httpClient;
-        private const string ApiKey = "90d3de4b60864b6f24c7cc3eff224f10257a5a7bfaddd6a87ff6d5ae3c0ab0d8";
+        private const string ApiKey = "36c42db20b8dcd535b5b0f21fd188416d332d164f907bbfbe5e75009bf4a9eb7";
 
         public CoinCapService()
         {
@@ -36,7 +36,7 @@ namespace Assignment.Services
 
         public async Task<List<Market>> GetMarketsForCurrencyAsync(string currencyId)
         {
-            var response = await httpClient.GetAsync($"https://rest.coincap.io/v3/exchanges");
+            var response = await httpClient.GetAsync($"https://rest.coincap.io/v3/markets?baseId={currencyId}");
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
