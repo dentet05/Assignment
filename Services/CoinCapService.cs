@@ -22,9 +22,9 @@ namespace Assignment.Services
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ApiKey);
         }
 
-        public async Task<List<Cryptocurrency>> GetTopCurrenciesAsync(int count = 10)
+        public async Task<List<Cryptocurrency>> GetCurrenciesAsync()
         {
-            var response = await httpClient.GetAsync($"https://rest.coincap.io/v3/assets?limit={count}");
+            var response = await httpClient.GetAsync($"https://rest.coincap.io/v3/assets?limit=2500");
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();

@@ -45,5 +45,11 @@ namespace Assignment.Views
                 await Windows.System.Launcher.LaunchUriAsync(uri);
             }
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+                Frame.GoBack();
+        }
     }
 }

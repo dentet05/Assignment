@@ -2,6 +2,7 @@
 using Assignment.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,8 @@ namespace Assignment.Views
     public sealed partial class MainPage : Page
     {
         public MainViewModel Vm => (MainViewModel)DataContext;
+        private ObservableCollection<Cryptocurrency> allCurrencies = new ObservableCollection<Cryptocurrency>();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -34,6 +37,7 @@ namespace Assignment.Views
         private async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             await Vm.LoadCurrenciesAsync();
+            allCurrencies = new ObservableCollection<Cryptocurrency>(Vm.Currencies);
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -43,6 +47,12 @@ namespace Assignment.Views
             {
                 Frame.Navigate(typeof(CurrencyDetailsPage), selected);
             }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string query = (sender as TextBox)?.Text ?? "";
+            Vm.FilterCurrencies(query);
         }
     }
 }
