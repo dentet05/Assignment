@@ -14,7 +14,7 @@ namespace Assignment.Services
     public class CoinCapService
     {
         private readonly HttpClient httpClient;
-        private const string ApiKey = "36c42db20b8dcd535b5b0f21fd188416d332d164f907bbfbe5e75009bf4a9eb7";
+        private const string ApiKey = "4bc7897d4dd2e050eb5450d5741fa7d512d9702751c41ab558688356dcfedaa4";
 
         public CoinCapService()
         {

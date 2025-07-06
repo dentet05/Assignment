@@ -11,22 +11,24 @@
 
     <Grid Padding="20">
         <StackPanel>
+
             <Button Content="← Back"
-            Click="BackButton_Click"
-            HorizontalAlignment="Left"
-            Margin="0,0,0,10"/>
-            <TextBlock Text="{Binding Currency.Name}" FontSize="24"/>
+                    Click="BackButton_Click"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,10"/>
 
-            <TextBlock Text="Price (USD):" FontSize="18"/>
-            <TextBlock Text="{Binding Currency.PriceUsdFormatted}" FontSize="16"/>
+            <TextBlock Text="{Binding Currency.Name}" Style="{StaticResource HeaderTextStyle}" />
 
-            <TextBlock Text="Change (24h):" FontSize="18"/>
-            <TextBlock Text="{Binding Currency.ChangePercent24Hr, Converter={StaticResource ChangeFormatter}}" FontSize="16" Margin="0,0,0,10"/>
+            <TextBlock Text="Price (USD):" Style="{StaticResource SubHeaderTextStyle}" />
+            <TextBlock Text="{Binding Currency.PriceUsdFormatted}" Style="{StaticResource ListItemTextStyle}" />
 
-            <TextBlock Text="Volume (24h):" FontSize="18"/>
-            <TextBlock Text="{Binding Currency.volumeUsd24HrFormatted}" FontSize="16" Margin="0,0,0,10"/>
+            <TextBlock Text="Change (24h):" Style="{StaticResource SubHeaderTextStyle}" />
+            <TextBlock Text="{Binding Currency.ChangePercent24Hr, Converter={StaticResource ChangeFormatter}}" Style="{StaticResource ListItemTextStyle}" />
 
-            <TextBlock Text="Markets:" FontSize="18" Margin="0,10,0,5"/>
+            <TextBlock Text="Volume (24h):" Style="{StaticResource SubHeaderTextStyle}" />
+            <TextBlock Text="{Binding Currency.volumeUsd24HrFormatted}" Style="{StaticResource ListItemTextStyle}" />
+
+            <TextBlock Text="Markets:" Style="{StaticResource SubHeaderTextStyle}" />
 
             <ScrollViewer Height="300"
                           VerticalScrollBarVisibility="Auto"
@@ -35,9 +37,9 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <TextBlock Text="{Binding ExchangeId}" Width="100"/>
-                                <TextBlock Text="{Binding QuoteSymbol}" Width="60"/>
-                                <TextBlock Text="{Binding PriceUsdFormatted}" Width="100"/>
+                                <TextBlock Text="{Binding ExchangeId}" Style="{StaticResource ListItemTextStyle}" Width="100"/>
+                                <TextBlock Text="{Binding QuoteSymbol}" Style="{StaticResource ListItemTextStyle}" Width="60"/>
+                                <TextBlock Text="{Binding PriceUsdFormatted}" Style="{StaticResource ListItemTextStyle}" Width="100"/>
                                 <Button Content="Go to Market"
                                         Tag="{Binding MarketUrl}"
                                         Click="OnMarketButtonClick"

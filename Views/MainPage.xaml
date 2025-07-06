@@ -23,15 +23,14 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
-               Text="Top Cryptocurrencies"
-               FontSize="24"
-               Margin="0,0,0,20"/>
+                   Text="Top Cryptocurrencies"
+                   Style="{StaticResource HeaderTextStyle}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
             <TextBox x:Name="SearchBox"
-             Width="300"
-             PlaceholderText="Search by name..."
-             TextChanged="SearchBox_TextChanged"/>
+                     Width="300"
+                     PlaceholderText="Search by name..."
+                     TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
 
         <Grid Grid.Row="2" Margin="0,0,0,10">
@@ -43,18 +42,18 @@
                 <ColumnDefinition Width="160"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Rank" FontWeight="Bold"/>
-            <TextBlock Grid.Column="1" Text="Symbol" FontWeight="Bold"/>
-            <TextBlock Grid.Column="2" Text="Name" FontWeight="Bold"/>
-            <TextBlock Grid.Column="3" Text="Price (USD)" FontWeight="Bold"/>
-            <TextBlock Grid.Column="4" Text="Change (24h)" FontWeight="Bold"/>
+            <TextBlock Grid.Column="0" Text="Rank" Style="{StaticResource SubHeaderTextStyle}"/>
+            <TextBlock Grid.Column="1" Text="Symbol" Style="{StaticResource SubHeaderTextStyle}"/>
+            <TextBlock Grid.Column="2" Text="Name" Style="{StaticResource SubHeaderTextStyle}"/>
+            <TextBlock Grid.Column="3" Text="Price (USD)" Style="{StaticResource SubHeaderTextStyle}"/>
+            <TextBlock Grid.Column="4" Text="Change (24h)" Style="{StaticResource SubHeaderTextStyle}"/>
         </Grid>
 
         <ScrollViewer Grid.Row="3"
-                  HorizontalScrollMode="Enabled"
-                  HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollMode="Auto"
-                  VerticalScrollBarVisibility="Auto">
+                      HorizontalScrollMode="Enabled"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollMode="Auto"
+                      VerticalScrollBarVisibility="Auto">
             <ListView ItemsSource="{Binding Currencies}"
                       IsItemClickEnabled="True"
                       ItemClick="ListView_ItemClick">
@@ -69,15 +68,15 @@
                                 <ColumnDefinition Width="160"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Text="{Binding Rank}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Symbol}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="2" Text="{Binding Name}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                            <TextBlock Grid.Column="3" VerticalAlignment="Center">
-                            <Run Text="$"/>
-                            <Run Text="{Binding PriceUsdFormatted}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Rank}" Style="{StaticResource ListItemTextStyle}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Symbol}" Style="{StaticResource ListItemTextStyle}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Name}" Style="{StaticResource ListItemTextStyle}" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Grid.Column="3" Style="{StaticResource ListItemTextStyle}">
+                                <Run Text="$"/>
+                                <Run Text="{Binding PriceUsdFormatted}"/>
                             </TextBlock>
-                            <TextBlock Grid.Column="4" VerticalAlignment="Center">
-                            <Run Text="{Binding ChangePercent24Hr, Converter={StaticResource ChangeFormatter}}"/>
+                            <TextBlock Grid.Column="4" Style="{StaticResource ListItemTextStyle}">
+                                <Run Text="{Binding ChangePercent24Hr, Converter={StaticResource ChangeFormatter}}"/>
                             </TextBlock>
                         </Grid>
                     </DataTemplate>
